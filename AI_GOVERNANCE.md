@@ -1,95 +1,129 @@
-# PPWR MVP - AI Governance Rules (v1)
+# PPWR MVP - AI Governance Rules (v2)
 
 ## Purpose
-This document defines how ALL AI systems must behave when interacting with this project:
-ChatGPT, Gemini, Codex, Claude.
 
-It ensures system stability, prevents simplification, and enforces consistency with real Google Sheets data.
+This document defines how AI systems may participate in the design, review, and implementation of the Lengva PPWR MVP project.
+
+It exists to prevent uncontrolled architecture changes, over-engineering, and accidental loss of traceability.
 
 ---
 
-## 🧠 AI ROLES IN THIS SYSTEM
+## AI Roles
 
 ### ChatGPT
-- System architecture analysis
-- Rule consistency checking
-- High-level reasoning
+
+* Architecture analysis
+* Business rule validation
+* Risk identification
+* Gap analysis
 
 ### Gemini
-- Alternative ideas / model proposals
-- Early-stage exploration
+
+* Alternative solution proposals
+* Concept exploration
+* Challenge assumptions
 
 ### Codex
-- Code generation (Apps Script)
-- Implementation of approved logic
+
+* Code review
+* Impact analysis
+* Implementation of approved designs
 
 ### Claude
-- Logical consistency audit
-- Contradiction detection between rules and reality
+
+* Consistency review
+* Contradiction detection
+* Documentation audit
 
 ---
 
-## 🛑 RULE 1: NO SINGLE AI AUTHORITY
+## Rule 1: No Single AI Authority
 
-No AI is allowed to define the system alone.
+No AI system is allowed to define architecture independently.
 
-All outputs must be considered proposals until validated against:
+All outputs are proposals until validated against:
 
-- Google Sheets (REAL DATA)
-- GitHub rules (SYSTEM LOGIC)
-
----
-
-## 🛑 RULE 2: REALITY OVERRIDE
-
-Google Sheets (PPWR_Data_Core) is the ONLY source of truth.
-
-AI must not:
-- invent missing structure
-- remove existing layers
-- assume simplified models
+* Business requirements
+* Existing system structure
+* Product Owner decisions
 
 ---
 
-## 🛑 RULE 3: NO SYSTEM SIMPLIFICATION
+## Rule 2: Reality Overrides Theory
 
-The system MUST remain:
+Real business processes take priority over theoretical models.
 
-SKU + Document + Batch + Invoice + Allocation
-
-AI must NOT reduce this structure.
+Architecture decisions must reflect actual Europola operations rather than idealized ERP or MES concepts.
 
 ---
 
-## 🛑 RULE 4: CLAUDE AS AUDITOR
+## Rule 3: Preserve Existing Structure
 
-Claude's role is strictly:
+The existing PPWR_Data_Core structure must be preserved until formally reviewed.
 
-- detect contradictions
-- validate logic consistency
-- flag missing relationships
+Current layers include:
 
-Claude cannot:
-- redesign system
-- remove layers
-- override rules
+* Products
+* Documents
+* Batches
+* Invoices
+* Allocations
+* Generated Documents
 
----
-
-## 🛑 RULE 5: CHANGE CONTROL
-
-Any system change must:
-1. Be explicitly requested by the user
-2. Be compatible with existing Sheets structure
-3. Preserve full traceability chain
+AI systems may propose improvements, abstractions, or simplifications, but may not remove existing layers without explicit approval.
 
 ---
 
-## 🧭 SYSTEM SAFETY PRINCIPLE
+## Rule 4: No Automatic Refactoring
 
-This system prioritizes:
-- traceability integrity
-- auditability
-- version control safety
+AI systems must not:
 
-over simplicity.
+* Delete existing entities
+* Collapse existing relationships
+* Introduce major architectural changes
+
+unless explicitly requested.
+
+---
+
+## Rule 5: Traceability First
+
+When a conflict exists between:
+
+* Simplicity
+* Traceability
+
+traceability takes priority.
+
+---
+
+## Rule 6: Change Control
+
+Any proposed architecture change must:
+
+1. Describe the current state.
+2. Describe the proposed state.
+3. Explain benefits.
+4. Explain risks.
+5. Receive explicit approval.
+
+---
+
+## Rule 7: Documentation Before Code
+
+Architecture and business rules must be reviewed before implementation.
+
+Code changes must never become the primary source of system design.
+
+---
+
+## System Safety Principle
+
+The system prioritizes:
+
+* Auditability
+* Traceability
+* Historical integrity
+* Controlled evolution
+
+over aggressive simplification.
