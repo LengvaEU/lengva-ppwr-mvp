@@ -1,103 +1,137 @@
-# PPWR MVP - System Architecture Map (1 page view)
+# PPWR MVP - System Architecture Map
 
 ## Purpose
-This document provides a single-page structural overview of the entire PPWR MVP system.
 
-It defines how data, logic, and AI interact without redefining system behavior.
+This document provides a high-level overview of the current and target architecture.
 
----
-
-## 🟦 LAYER 1: REALITY (Google Sheets)
-
-The source of truth is:
-
-PPWR_Data_Core
-
-Contains:
-
-- Products_Master (SKU compliance core)
-- Supplier_Batches (incoming material tracking)
-- Europola_Invoices (sales/outbound layer)
-- Batch_Allocation (traceability bridge)
-- Generated_Docs (compliance outputs)
-- System_Config (system settings)
-
-👉 This layer is the ONLY source of truth for data.
+It is intended to explain system structure without prescribing implementation details.
 
 ---
 
-## 🟨 LAYER 2: BUSINESS LOGIC (GitHub)
+# Layer 1: Operational Reality
 
-GitHub defines interpretation rules, not data.
+## Google Sheets (PPWR_Data_Core)
 
-Modules:
+Current operational data resides in:
 
-- SYSTEM_PROMPT.md
-- ARCHITECTURE.md
-- BUSINESS_RULES.md
-- DATA_MODEL_MAPPING.md
-- CODEX_VIEW.md
+* Products_Master
+* Supplier_Batches
+* Europola_Invoices
+* Batch_Allocation
+* Generated_Docs
+* System_Config
 
-Responsibilities:
+This is the current operational structure.
 
-- Define compliance logic
-- Define traceability rules
-- Define AI interpretation constraints
-- Prevent simplification of real system
-
-👉 This layer does NOT store operational data.
+It reflects how data is stored today.
 
 ---
 
-## 🟩 LAYER 3: AI TOOLS
+# Layer 2: Business Logic
 
-Includes:
+## GitHub Documentation
 
-- ChatGPT
-- Gemini
-- Codex
-- Claude (future)
+GitHub stores:
 
-Responsibilities:
+* Business Rules
+* Architecture Decisions
+* AI Governance
+* Future Design Reviews
 
-- Analyze system
-- Validate logic consistency
-- Suggest improvements
-- Detect contradictions
+GitHub defines interpretation and evolution rules.
 
-👉 AI does NOT define system truth.
+It does not store operational business data.
 
 ---
 
-## 🔁 SYSTEM FLOW
+# Layer 3: AI Assistance Layer
 
-SKU + Document + Batch + Invoice + Allocation
+Tools may include:
 
-→ processed via Business Rules (GitHub)
+* ChatGPT
+* Gemini
+* Codex
+* Claude
 
-→ evaluated against real data (Sheets)
+AI tools:
 
-→ output generated in Generated_Docs
+* analyze
+* review
+* audit
+* recommend
 
----
-
-## ⚠️ SAFETY PRINCIPLES
-
-- AI must not collapse system into simplified SKU-only model
-- Batch layer is mandatory, not optional
-- Invoice layer is mandatory, not optional
-- GitHub defines rules, not reality
-- Google Sheets is immutable operational truth
+AI tools do not define truth.
 
 ---
 
-## 🧠 SYSTEM TYPE
+# Current Operational Flow
+
+Products
+
+↓
+
+Supplier Documents
+
+↓
+
+Sales Invoices
+
+↓
+
+Generated Customer Documents
+
+Additional traceability data may exist through:
+
+* Supplier_Batches
+* Batch_Allocation
+
+---
+
+# Architecture Direction
+
+The project is currently evolving toward a compliance-centered model:
+
+SKU / Item
+
+↓
+
+Supplier Document
+
+↓
+
+Compliance Claim
+
+↓
+
+Customer Document
+
+while preserving compatibility with existing operational data.
+
+---
+
+# Open Decisions
+
+The following questions remain intentionally unresolved:
+
+* Invoice Date vs Generation Date validation
+* Future batch-level compliance requirements
+* Future PPWR extensions
+* Future cryptographic verification
+
+These topics remain open until formally decided.
+
+---
+
+# System Type
 
 This is a:
 
-Hybrid Compliance + Traceability + Document Generation system
+Compliance + Traceability + Document Automation System
 
-NOT ERP
-NOT pure compliance tool
+It is NOT:
 
-It is a layered hybrid system with strict separation of concerns.
+* ERP
+* MES
+* Warehouse Management System
+
+although it may store limited traceability information.
